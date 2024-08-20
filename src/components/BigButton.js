@@ -1,12 +1,11 @@
 import React from 'react';
 
-const BigButton = () => {
-    // Function that handles the button click
+const BigButton = ({ onPress }) => {
     const handleClick = () => {
-        alert('Big Button was clicked!');
+        onPress(); // This function will be passed from the App component to update isPressed
+        // alert('Big Button was clicked!');
     };
 
-    // Return statement inside the function
     return (
         <button onClick={handleClick}>
             ServiceM8
@@ -14,5 +13,4 @@ const BigButton = () => {
     );
 };
 
-// Export the component
 export default BigButton;

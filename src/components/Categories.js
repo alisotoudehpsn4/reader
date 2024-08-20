@@ -15,6 +15,7 @@ const Categories = () => {
       <button>Company</button>
       <button>Attachments</button>
     </div>
+    
   )
 }
 
