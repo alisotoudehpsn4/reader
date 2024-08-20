@@ -7,7 +7,7 @@ const BigButton = ({ onPress }) => {
     };
 
     return (
-        <button onClick={handleClick}>
+        <button className='bigButton' onClick={handleClick}>
             ServiceM8
         </button>
     );
