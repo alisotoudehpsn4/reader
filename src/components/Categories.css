@@ -154,3 +154,92 @@
   transform: scale(0.95);
   animation: fadeInScale 0.5s ease-in-out forwards;
 }
+
+
+/* Add a container for field input and submit button */
+.field-selection {
+  display: flex;
+  align-items: center; /* Align items along the center line */
+  gap: 10px; /* Space between input and button */
+  margin: 20px 0; /* Add space around the field selection area */
+  font-family: 'Poppins', sans-serif;
+}
+
+.field-selection input[type="text"] {
+  padding: 10px;
+  font-size: 14px; /* Consistent font size */
+  flex-grow: 1; /* Allow input to take up available space */
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-family: 'Poppins', sans-serif;
+}
+
+.field-selection button {
+  padding: 10px 20px;
+  font-size: 14px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  flex-shrink: 0; /* Prevent button from shrinking */
+}
+
+.field-selection button:hover {
+  background-color: #0056b3;
+}
+
+/* Display selected fields */
+.field-selection p {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #333;
+}
+
+/* Adjust alignment and responsiveness for smaller screens */
+@media (max-width: 768px) {
+  .field-selection {
+    flex-direction: column; /* Stack elements vertically on smaller screens */
+    align-items: stretch; /* Stretch to full width */
+  }
+
+  .field-selection input[type="text"] {
+    width: 100%; /* Full width input */
+    margin-bottom: 10px; /* Space between input and button */
+  }
+
+  .field-selection button {
+    width: 100%; /* Full width button for small screens */
+    padding: 8px 16px; /* Reduce padding */
+    font-size: 12px; /* Reduce font size */
+  }
+}
+
+@media (max-width: 480px) {
+  .field-selection input[type="text"] {
+    width: 100%; /* Full width in very small screens */
+    font-size: 12px; /* Slightly smaller font size */
+  }
+
+  .field-selection button {
+    width: 50%; /* Make the button smaller on mobile */
+    padding: 5px 10px; /* Further reduce padding */
+    font-size: 10px; /* Further reduce font size */
+    margin-left: auto; /* Align the button to the right */
+  }
+}
+
+/* Apply animation to all relevant elements */
+.categories-container, .category, .back-button, .categories-header, .field-selection {
+  animation: fadeInScale 0.5s ease-in-out;
+}
+
+/* Fade and scale animation class */
+.animate-fade-scale {
+  opacity: 0;
+  transform: scale(0.95);
+  animation: fadeInScale 0.5s ease-in-out forwards;
+}
+
