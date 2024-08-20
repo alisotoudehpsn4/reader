@@ -1,57 +1,83 @@
 import React, { useState } from 'react';
-import FileDrop from './FileDrop';
+import FileView from './FileView';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { 
-  faHouse, 
-  faUserTie, 
-  faBox, 
-  faMapMarkerAlt, 
-  faTools, 
-  faTasks, 
-  faFileAlt, 
-  faBuilding, 
-  faPaperclip 
-} from '@fortawesome/free-solid-svg-icons';
+import { faFolder, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import './Categories.css';
 
 const Categories = ({ onBack }) => {
-  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState('Staff'); // Default category
+  const [selectedFields, setSelectedFields] = useState(['uuid']); // Default field selection
+  const [inputField, setInputField] = useState(''); // Input field state
 
-  const icons = {
-    home: <FontAwesomeIcon icon={faHouse} />,
-    staff: <FontAwesomeIcon icon={faUserTie} />,
-    material: <FontAwesomeIcon icon={faBox} />,
-    location: <FontAwesomeIcon icon={faMapMarkerAlt} />,
-    jobMaterial: <FontAwesomeIcon icon={faTools} />,
-    jobActivity: <FontAwesomeIcon icon={faTasks} />,
-    job: <FontAwesomeIcon icon={faFileAlt} />,
-    dbNote: <FontAwesomeIcon icon={faFileAlt} />,
-    company: <FontAwesomeIcon icon={faBuilding} />,
-    attachments: <FontAwesomeIcon icon={faPaperclip} />,
-  };
+  const categories = [
+    { name: 'Staff', icon: faFolder },
+    { name: 'Material', icon: faFolder },
+    { name: 'Location', icon: faFolder },
+    { name: 'Job-Material', icon: faFolder },
+    { name: 'Job-Activity', icon: faFolder },
+    { name: 'Job', icon: faFolder },
+    { name: 'DB-Note', icon: faFolder },
+    { name: 'Company', icon: faFolder },
+    { name: 'Attachments', icon: faFolder }
+  ];
 
-  const handleCategoryClick = (category) => {
+  // Function to handle category selection
+  const handleCategorySelect = (category) => {
     setSelectedCategory(category);
   };
 
-  return (
-    <div>
-      <button onClick={() => handleCategoryClick('Staff')}>{icons.staff} Staff</button>
-      <button onClick={() => handleCategoryClick('Material')}>{icons.material} Material</button>
-      <button onClick={() => handleCategoryClick('Location')}>{icons.location} Location</button>
-      <button onClick={() => handleCategoryClick('Job-Material')}>{icons.jobMaterial} Job-Material</button>
-      <button onClick={() => handleCategoryClick('Job-Activity')}>{icons.jobActivity} Job-Activity</button>
-      <button onClick={() => handleCategoryClick('Job')}>{icons.job} Job</button>
-      <button onClick={() => handleCategoryClick('DB-Note')}>{icons.dbNote} DB-Note</button>
-      <button onClick={() => handleCategoryClick('Company')}>{icons.company} Company</button>
-      <button onClick={() => handleCategoryClick('Attachments')}>{icons.attachments} Attachments</button>
-      <button onClick={onBack}>{icons.home} Home</button>
+  // Handle field input changes
+  const handleFieldChange = (e) => {
+    setInputField(e.target.value); // Update inputField state with user input
+  };
 
-      {selectedCategory && (
-        <div>
-          <h2>Upload files for {selectedCategory}</h2>
-          <FileDrop />
+  // Handle submit button click to set selected fields
+  const handleSubmitFields = () => {
+    // Update selectedFields state with inputField values
+    const fields = inputField.split(',').map(f => f.trim().toLowerCase());
+    setSelectedFields(fields);
+    setInputField(''); // Clear the input field after submission
+  };
+
+  return (
+    <div className="categories-container">
+      {/* Back Button */}
+      <button className="back-button" onClick={onBack}>
+        <FontAwesomeIcon icon={faArrowLeft} /> Back
+      </button>
+
+      {/* Categories Header */}
+      <div className="categories-header">
+        <div className="categories">
+          {categories.map((cat, index) => (
+            <div 
+              key={index} 
+              className={`category ${selectedCategory === cat.name ? 'active' : ''}`}
+              onClick={() => handleCategorySelect(cat.name)}
+            >
+              <FontAwesomeIcon icon={cat.icon} size="2x" />
+              <span>{cat.name}</span>
+            </div>
+          ))}
         </div>
-      )}
+      </div>
+
+      {/* Field Selection Input and Button */}
+      <div className="field-selection">
+        <input 
+          type="text" 
+          placeholder="Enter field name(s) e.g., uuid, name" 
+          value={inputField}
+          onChange={handleFieldChange} 
+        />
+        <button onClick={handleSubmitFields}>Submit Fields</button>
+        <p><strong>Selected Fields:</strong> {selectedFields.join(', ')}</p>
+      </div>
+
+      {/* Display the FileView component for the selected category */}
+      <div className="file-view-container">
+        <FileView category={selectedCategory} selectedFields={selectedFields} />
+      </div>
     </div>
   );
 };

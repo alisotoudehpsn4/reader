@@ -1,0 +1,298 @@
+/* Container for the file view */
+.file-view-container {
+  font-family: 'Arial', sans-serif;
+  padding: 20px;
+  width: 100%; /* Change to 100% to make it responsive */
+  max-width: 900px; /* Set a max-width instead of fixed width */
+  height: auto; /* Remove fixed height for better responsiveness */
+  margin: auto;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* Prevent scrolling */
+  box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+}
+
+/* Content wrapper to ensure proper content fitting */
+.file-view-content, .file-content-view {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header style for the category */
+.file-view-container h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Style for the custom file upload button */
+.custom-file-upload {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+  text-align: center;
+  transition: background-color 0.3s;
+}
+
+.custom-file-upload:hover {
+  background-color: #0056b3;
+}
+
+/* Hide the default file input */
+.file-input {
+  display: none;
+}
+
+/* Style for the file list */
+.file-list {
+  margin-top: 20px;
+  max-height: calc(100% - 80px); /* Adjust to fit content within the container */
+  overflow-y: auto; /* Allow vertical scrolling if necessary */
+}
+
+.file-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f8f9fa;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s;
+  flex-wrap: nowrap; /* Prevent wrapping by default */
+}
+
+.file-item:hover {
+  background-color: #e9ecef;
+}
+
+.remove-button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s;
+  margin-left: 10px; /* Add some space between text and button */
+  flex-shrink: 0; /* Prevent the button from shrinking */
+}
+
+.remove-button:hover {
+  background-color: #7a0b16;
+}
+
+.file-item span {
+  font-size: 16px;
+  color: #333;
+  flex-grow: 1; /* Allow text to take up remaining space */
+  margin-left: 15px; /* Increase space between icon and file name */
+}
+
+
+/* Style for the file content view */
+.file-content-view {
+  margin-top: 20px;
+}
+
+.file-content-view h3 {
+  font-size: 20px;
+  color: #333;
+}
+
+.back-button {
+  padding: 8px 16px;
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-bottom: 20px;
+}
+
+.back-button:hover {
+  background-color: #5a6268;
+}
+
+/* Style for the table displaying file content */
+.file-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.file-table th, .file-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.file-table th {
+  background-color: #f1f1f1;
+  color: #333;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .file-view-container {
+    padding: 15px; /* Reduce padding for smaller screens */
+  }
+
+  .file-item {
+    padding: 8px;
+    flex-direction: row; /* Ensure elements remain in a row */
+    align-items: center; /* Keep items centered */
+    flex-wrap: nowrap; /* Prevent wrapping */
+  }
+
+  .file-item span {
+    margin-left: 10px; /* Space between icon and file name */
+    font-size: 16px;
+    color: #333;
+    flex-grow: 1; /* Fill available space */
+  }
+
+  .remove-button {
+    padding: 4px 6px; /* Smaller padding for mobile */
+    font-size: 14px; /* Smaller font size */
+    width: auto; /* Keep button size auto */
+    margin-left: auto; /* Push the button to the right */
+    align-self: center; /* Align vertically with the file name */
+  }
+
+  .file-item img {
+    width: 20px; /* Reduce icon size on mobile */
+    height: 20px;
+  }
+
+  .custom-file-upload {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+
+  .file-content-view h3 {
+    font-size: 18px;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .file-view-container h2 {
+    font-size: 20px; /* Adjust header font size for very small screens */
+  }
+
+  .file-item {
+    padding: 5px;
+    margin-bottom: 8px;
+    flex-direction: column; /* Stack elements vertically on very small screens */
+    align-items: flex-start; /* Align items to start from the left */
+  }
+
+  .file-item span {
+    font-size: 16px;
+    color: #333;
+    flex-grow: 1; /* Allow text to take up remaining space */
+    margin-left: 10px; /* Add space between icon and file name */
+  }
+  
+
+  .remove-button {
+    padding: 3px 5px; /* Even smaller padding */
+    font-size: 12px; /* Smaller font size */
+    width: auto; /* Auto width to fit the content */
+    margin-left: 5px;
+    align-self: center; /* Align vertically with the file name */
+  }
+
+  .file-item img {
+    width: 18px; /* Further reduce icon size on very small screens */
+    height: 18px;
+  }
+
+  .custom-file-upload {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  .back-button {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+}
+
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Apply animation to all relevant elements */
+.file-view-container, .file-content-view, .file-item, .remove-button, .custom-file-upload, .file-list, h2 {
+  animation: fadeInScale 0.5s ease-in-out;
+}
+
+/* New class for fade-in and scale animation */
+.animate-fade-scale {
+  opacity: 0;
+  transform: scale(0.95);
+  animation: fadeInScale 0.5s ease-in-out forwards;
+}
+
+/* Keyframes for the fade-in and scale effect */
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+input[type="text"] {
+  padding: 8px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: calc(100% - 100px); /* Adjust width considering the button */
+  box-sizing: border-box;
+}
+
+button {
+  padding: 8px 16px;
+  margin-left: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+
+
+
+
+
+

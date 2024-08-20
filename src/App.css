@@ -1,38 +1,240 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Base styles */
+body, html {
+  height: 100%;
+  margin: 0;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  background-color: #f0f0f0; /* Optional: background color for contrast */
+}
+
+.bigButton {
+  padding: 20px 40px; /* Large padding for a big button */
+  font-size: 32px; /* Large font size for visibility */
+  font-weight: bold; /* Bold text for emphasis */
+  background-color: #007bff; /* Button background color */
+  color: white; /* Button text color */
+  border: none;
+  border-radius: 10px; /* Rounded corners */
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  transition: background-color 0.3s, transform 0.3s; /* Smooth transition for hover effects */
+}
+
+.bigButton:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+  transform: scale(1.05); /* Slightly enlarge the button on hover */
+}
+
+.bigButton:active {
+  background-color: #004085; /* Even darker shade when pressed */
+  transform: scale(1); /* Reset scale when active */
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Header */
+header {
+  background-color: #007bff;
   color: white;
+  padding: 20px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
 }
 
-.App-link {
-  color: #61dafb;
+header a {
+  color: white;
+  text-decoration: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+header a:hover {
+  text-decoration: underline;
+}
+
+/* Main content area */
+.main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+
+.main .content {
+  flex: 3;
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.main .sidebar {
+  flex: 1;
+  padding: 20px;
+  background: #f1f1f1;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-left: 20px;
+}
+
+.main .sidebar h3 {
+  margin-top: 0;
+}
+
+/* Footer */
+footer {
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* Buttons */
+button, .button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s;
+}
+
+button:hover, .button:hover {
+  background-color: #0056b3;
+}
+
+button:disabled, .button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Responsive media queries */
+@media (max-width: 1024px) {
+  .main {
+    flex-direction: column;
   }
-  to {
-    transform: rotate(360deg);
+
+  .main .sidebar {
+    margin-left: 0;
+    margin-top: 20px;
+  }
+
+  header {
+    font-size: 20px;
   }
 }
+
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+  }
+
+  .main .content {
+    padding: 15px;
+  }
+
+  .main .sidebar {
+    padding: 15px;
+  }
+
+  button, .button {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    font-size: 18px;
+    padding: 15px;
+  }
+
+  .main {
+    padding: 10px;
+  }
+
+  .main .content, .main .sidebar {
+    padding: 10px;
+  }
+
+  button, .button {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  footer {
+    font-size: 12px;
+    padding: 8px;
+  }
+}
+
+
+
+/* Base styles */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+  background-color: #f9f9f9;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Keyframe Animation */
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Apply animation to all content */
+body, html, .bigButton, .content, .sidebar {
+  animation: fadeInScale 0.5s ease-in-out;
+}
+
+/* Example of button styling */
+.bigButton {
+  padding: 20px 40px;
+  font-size: 32px;
+  font-weight: bold;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.bigButton:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.bigButton:active {
+  background-color: #004085;
+  transform: scale(1);
+}
+

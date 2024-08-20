@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 import BigButton from './components/BigButton';
@@ -13,7 +12,7 @@ function App() {
   };
 
   const handleBack = () =>{
-    setIsPressed(false);
+    setIsPressed(false); // This will update the state to go back to BigButton
   }
 
   return (
