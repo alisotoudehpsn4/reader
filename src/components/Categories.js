@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Categories = () => {
+const Categories = ({onBack}) => {
 
 
   return (
@@ -14,6 +14,7 @@ const Categories = () => {
       <button>DB-Note</button>
       <button>Company</button>
       <button>Attachments</button>
+      <button onClick={onBack}>Back</button>
     </div>
     
   )

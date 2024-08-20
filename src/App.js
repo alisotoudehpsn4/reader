@@ -12,9 +12,13 @@ function App() {
     setIsPressed(true); // This will update the state when BigButton is clicked
   };
 
+  const handleBack = () =>{
+    setIsPressed(false);
+  }
+
   return (
     <div className="App">
-      {isPressed ? <Categories /> : <BigButton onPress={handlePress} />}
+      {isPressed ? <Categories onBack={handleBack} /> : <BigButton onPress={handlePress} />}
     </div>
   );
 }
